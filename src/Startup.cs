@@ -5,6 +5,7 @@ using k8s;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -62,7 +63,9 @@ namespace Hamuste
 
             services.AddSingleton<IKeyVaultClient>(s =>
             {
-                return new KeyVaultClient(GetToken);
+
+                AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+                return new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
             });
 
             services.AddAuthentication().AddScheme<KubernetesAuthenticationOptions, KubernetesAuthenticationHandler>("kubernetes", null);

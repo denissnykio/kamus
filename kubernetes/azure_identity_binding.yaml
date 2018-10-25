@@ -1,0 +1,8 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+ name: kamus-azure-identity-binding
+ namespace: team-devops
+spec:
+ AzureIdentity: kamus-api
+ Selector: kamus

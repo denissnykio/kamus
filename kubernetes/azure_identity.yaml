@@ -1,0 +1,9 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+ name: kamus-azure-identity
+ namespace: team-devops
+spec:
+ type: 0
+ ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<idname>
+ ClientID: 7bbd819a-717d-4061-8a50-a75e79c591ba
