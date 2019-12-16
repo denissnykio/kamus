@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "commander": "^2.19.0",
+    "commander": "^2.20.3",
     "node-readfiles": "^0.2.0"
   }
 }
